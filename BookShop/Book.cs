@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookShop
 {
+    [Serializable]
     public class Book : ListViewItem
     {
         public new string Name;
@@ -42,5 +44,9 @@ namespace BookShop
         {
             return Name;
         }
+
+        protected Book(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
+
     }
 }

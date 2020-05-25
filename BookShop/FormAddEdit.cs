@@ -15,9 +15,10 @@ namespace BookShop
     {
         FormMain Main;
         List<Book> Books;
-        public FormAddEdit(ref List<Book> books)
+        public FormAddEdit(ref List<Book> books, Form owner)
         {
             InitializeComponent();
+            this.Owner = owner;
             Main = this.Owner as FormMain;
             Books = books;
         }
