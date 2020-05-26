@@ -41,12 +41,12 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSaveAs = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripEdit = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripButtonSaveAs = new System.Windows.Forms.ToolStripButton();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,10 +62,13 @@
             this.columnYear,
             this.columnPrice,
             this.columnNumber});
+            this.booksLV.FullRowSelect = true;
+            this.booksLV.GridLines = true;
             this.booksLV.HideSelection = false;
             this.booksLV.Location = new System.Drawing.Point(12, 39);
+            this.booksLV.MultiSelect = false;
             this.booksLV.Name = "booksLV";
-            this.booksLV.Size = new System.Drawing.Size(814, 363);
+            this.booksLV.Size = new System.Drawing.Size(805, 363);
             this.booksLV.TabIndex = 0;
             this.booksLV.UseCompatibleStateImageBehavior = false;
             this.booksLV.View = System.Windows.Forms.View.Details;
@@ -142,6 +145,16 @@
             this.toolStripButtonSave.Text = "Сохранить";
             this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
             // 
+            // toolStripButtonSaveAs
+            // 
+            this.toolStripButtonSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSaveAs.Image")));
+            this.toolStripButtonSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSaveAs.Name = "toolStripButtonSaveAs";
+            this.toolStripButtonSaveAs.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonSaveAs.Text = "Сохранить как";
+            this.toolStripButtonSaveAs.Click += new System.EventHandler(this.toolStripButtonSaveAs_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -165,6 +178,7 @@
             this.toolStripDelete.Name = "toolStripDelete";
             this.toolStripDelete.Size = new System.Drawing.Size(23, 22);
             this.toolStripDelete.Text = "Удалить";
+            this.toolStripDelete.Click += new System.EventHandler(this.toolStripDelete_Click);
             // 
             // toolStripEdit
             // 
@@ -174,16 +188,6 @@
             this.toolStripEdit.Name = "toolStripEdit";
             this.toolStripEdit.Size = new System.Drawing.Size(23, 22);
             this.toolStripEdit.Text = "Редактировать";
-            // 
-            // toolStripButtonSaveAs
-            // 
-            this.toolStripButtonSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSaveAs.Image")));
-            this.toolStripButtonSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSaveAs.Name = "toolStripButtonSaveAs";
-            this.toolStripButtonSaveAs.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonSaveAs.Text = "Сохранить как";
-            this.toolStripButtonSaveAs.Click += new System.EventHandler(this.toolStripButtonSaveAs_Click);
             // 
             // openFileDialog
             // 

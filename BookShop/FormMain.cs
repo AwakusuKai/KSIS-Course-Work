@@ -31,6 +31,7 @@ namespace BookShop
 
         public void RedrawList()
         {
+            booksLV.Items.Clear();
             foreach (Book book in Books)
             {
                 booksLV.Items.Add(book);
@@ -62,6 +63,12 @@ namespace BookShop
             if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
             Serializer.Serialize(Books, saveFileDialog.FileName);
+        }
+
+        private void toolStripDelete_Click(object sender, EventArgs e)
+        {
+            Books.Remove((Book)booksLV.SelectedItems[0]);
+            RedrawList();
         }
     }
 }

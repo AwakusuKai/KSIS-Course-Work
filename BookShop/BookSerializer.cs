@@ -31,16 +31,16 @@ namespace BookShop
         {
             using (FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate))
             {
-                /*try
-                {*/
+                try
+                {
                     List<Book> books = (List<Book>)formatter.Deserialize(fileStream);
                     return books;
-               // }
-                /*catch (SerializationException ex)
+                }
+                catch (SerializationException ex)
                 {
                     MessageBox.Show("Ошибка! Не удалось открыть файл");
                     return null;
-                }*/
+                }
             }
         }
     }
