@@ -12,7 +12,6 @@ namespace BookShop
 {
     class BookSerializer : ISerializer
     {
-        //string path = "Employee.bin";
         private BinaryFormatter formatter;
         public BookSerializer()
         {

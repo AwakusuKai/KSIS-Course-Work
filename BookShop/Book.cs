@@ -40,13 +40,18 @@ namespace BookShop
             base.SubItems.Add(Number.ToString());
         }
 
-        public override string ToString()
+        protected Book(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-            return Name;
+
+            Name = base.Text;
+            Autor = base.SubItems[1].Text;
+            Genre = base.SubItems[2].Text;
+            Type = base.SubItems[3].Text;
+            PublishingHouse = base.SubItems[4].Text;
+            Year = int.Parse(base.SubItems[5].Text.ToString());
+            Price = float.Parse(base.SubItems[6].Text.ToString());
+            Number = int.Parse(base.SubItems[7].Text.ToString());
+
         }
-
-        protected Book(SerializationInfo info, StreamingContext context) : base(info, context) { }
-
-
     }
 }

@@ -24,7 +24,7 @@ namespace BookShop
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            FormAddEdit formAddEdit = new FormAddEdit(ref Books, this);
+            FormAddEdit formAddEdit = new FormAddEdit(ref Books, this, 0);
             formAddEdit.Owner = this;
             formAddEdit.Show();
         }
@@ -69,6 +69,34 @@ namespace BookShop
         {
             Books.Remove((Book)booksLV.SelectedItems[0]);
             RedrawList();
+        }
+
+        private void toolStripEdit_Click(object sender, EventArgs e)
+        {
+            int i = -1;
+            foreach (Book book in Books)
+            {
+                i++;
+                if (book == (Book)booksLV.SelectedItems[0])
+                {
+                    break;
+                }
+            }
+            Book bookToEdit = Books[i];
+            FormAddEdit formAddEdit = new FormAddEdit(ref Books, this, 1, i, bookToEdit);
+            formAddEdit.Owner = this;
+            formAddEdit.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Book book in Books)
+            {
+                if (book.Name == "1984")
+                {
+                    MessageBox.Show("Yfqltyj");
+                }
+            }
         }
     }
 }
