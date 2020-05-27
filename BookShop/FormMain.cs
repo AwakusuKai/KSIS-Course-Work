@@ -29,12 +29,138 @@ namespace BookShop
             formAddEdit.Show();
         }
 
+        public bool CorrectName(string bookName)
+        {
+            if (NameTB.Text == "")
+            {
+                return true;
+            }
+            
+            if (bookName.Contains(NameTB.Text))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CorrectAutor(string bookAutor)
+        {
+            if (AutorTB.Text == "")
+            {
+                return true;
+            }
+
+            if (bookAutor.Contains(AutorTB.Text))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CorrectGenre(string bookGenre)
+        {
+            if (GenreCB.Text == "")
+            {
+                return true;
+            }
+
+            if (bookGenre.Contains(GenreCB.Text))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CorrectType(string bookType)
+        {
+            if (TypeCB.Text == "")
+            {
+                return true;
+            }
+
+            if (bookType.Contains(TypeCB.Text))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool CorrectMinPrice(float bookPrice)
+        {
+            if (PriceFromTB.Text == "")
+            {
+                return true;
+            }
+
+            try
+            {
+                float minPrice = float.Parse(PriceFromTB.Text);
+                if (bookPrice >= minPrice)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool CorrectMaxPrice(float bookPrice)
+        {
+            if (PriceToTB.Text == "")
+            {
+                return true;
+            }
+
+            try
+            {
+                float maxPrice = float.Parse(PriceToTB.Text);
+                if (bookPrice <= maxPrice)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool CorrectBook(Book book)
+        {
+            if (CorrectName(book.Name) &&
+                CorrectAutor(book.Autor) &&
+                CorrectGenre(book.Genre) &&
+                CorrectType(book.Type) &&
+                CorrectMinPrice(book.Price) &&
+                CorrectMaxPrice(book.Price))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void RedrawList()
         {
             booksLV.Items.Clear();
             foreach (Book book in Books)
             {
-                booksLV.Items.Add(book);
+                if (CorrectBook(book))
+                {
+                    booksLV.Items.Add(book);
+                } 
             }
         }
 
@@ -88,15 +214,44 @@ namespace BookShop
             formAddEdit.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void NameTB_TextChanged(object sender, EventArgs e)
         {
-            foreach (Book book in Books)
-            {
-                if (book.Name == "1984")
-                {
-                    MessageBox.Show("Yfqltyj");
-                }
-            }
+            RedrawList();
+        }
+
+        private void AutorTB_TextChanged(object sender, EventArgs e)
+        {
+            RedrawList();
+        }
+
+        private void GenreCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RedrawList();
+        }
+
+        private void TypeCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RedrawList();
+        }
+
+        private void PriceFromTB_TextChanged(object sender, EventArgs e)
+        {
+            RedrawList();
+        }
+
+        private void PriceToTB_TextChanged(object sender, EventArgs e)
+        {
+            RedrawList();
+        }
+
+        private void GenreCB_TextUpdate(object sender, EventArgs e)
+        {
+            RedrawList();
+        }
+
+        private void TypeCB_TextUpdate(object sender, EventArgs e)
+        {
+            RedrawList();
         }
     }
 }

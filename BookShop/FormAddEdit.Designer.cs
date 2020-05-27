@@ -143,6 +143,15 @@
             // GenteCB
             // 
             this.GenteCB.FormattingEnabled = true;
+            this.GenteCB.Items.AddRange(new object[] {
+            "Научная литература",
+            "Роман",
+            "Детектив",
+            "Триллер",
+            "Для детей",
+            "Биография",
+            "Приключения",
+            "Фантастика"});
             this.GenteCB.Location = new System.Drawing.Point(109, 86);
             this.GenteCB.Name = "GenteCB";
             this.GenteCB.Size = new System.Drawing.Size(212, 21);
@@ -151,6 +160,14 @@
             // TypeCB
             // 
             this.TypeCB.FormattingEnabled = true;
+            this.TypeCB.Items.AddRange(new object[] {
+            "Книга(тв. обложка)",
+            "Книга(журн. обложка)",
+            "Брошура",
+            "Журнал",
+            "Газета",
+            "Комиксы",
+            "Манга"});
             this.TypeCB.Location = new System.Drawing.Point(109, 113);
             this.TypeCB.Name = "TypeCB";
             this.TypeCB.Size = new System.Drawing.Size(212, 21);
