@@ -49,19 +49,19 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panelSearch = new System.Windows.Forms.Panel();
-            this.labelSearch = new System.Windows.Forms.Label();
-            this.labelNameSearch = new System.Windows.Forms.Label();
-            this.labelAutorSearch = new System.Windows.Forms.Label();
-            this.labelGenreSearch = new System.Windows.Forms.Label();
-            this.labelTypeSearch = new System.Windows.Forms.Label();
-            this.labelPriceFromSearch = new System.Windows.Forms.Label();
-            this.labelPriceToSearch = new System.Windows.Forms.Label();
-            this.NameTB = new System.Windows.Forms.TextBox();
-            this.AutorTB = new System.Windows.Forms.TextBox();
-            this.PriceFromTB = new System.Windows.Forms.TextBox();
-            this.PriceToTB = new System.Windows.Forms.TextBox();
-            this.GenreCB = new System.Windows.Forms.ComboBox();
             this.TypeCB = new System.Windows.Forms.ComboBox();
+            this.GenreCB = new System.Windows.Forms.ComboBox();
+            this.PriceToTB = new System.Windows.Forms.TextBox();
+            this.PriceFromTB = new System.Windows.Forms.TextBox();
+            this.AutorTB = new System.Windows.Forms.TextBox();
+            this.NameTB = new System.Windows.Forms.TextBox();
+            this.labelPriceToSearch = new System.Windows.Forms.Label();
+            this.labelPriceFromSearch = new System.Windows.Forms.Label();
+            this.labelTypeSearch = new System.Windows.Forms.Label();
+            this.labelGenreSearch = new System.Windows.Forms.Label();
+            this.labelAutorSearch = new System.Windows.Forms.Label();
+            this.labelNameSearch = new System.Windows.Forms.Label();
+            this.labelSearch = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panelSearch.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +87,7 @@
             this.booksLV.TabIndex = 0;
             this.booksLV.UseCompatibleStateImageBehavior = false;
             this.booksLV.View = System.Windows.Forms.View.Details;
+            this.booksLV.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.booksLV_ColumnClick);
             // 
             // columnName
             // 
@@ -231,107 +232,23 @@
             this.panelSearch.Size = new System.Drawing.Size(316, 363);
             this.panelSearch.TabIndex = 2;
             // 
-            // labelSearch
+            // TypeCB
             // 
-            this.labelSearch.AutoSize = true;
-            this.labelSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSearch.Location = new System.Drawing.Point(123, 12);
-            this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(75, 24);
-            this.labelSearch.TabIndex = 0;
-            this.labelSearch.Text = "ПОИСК";
-            // 
-            // labelNameSearch
-            // 
-            this.labelNameSearch.AutoSize = true;
-            this.labelNameSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNameSearch.Location = new System.Drawing.Point(3, 52);
-            this.labelNameSearch.Name = "labelNameSearch";
-            this.labelNameSearch.Size = new System.Drawing.Size(65, 16);
-            this.labelNameSearch.TabIndex = 1;
-            this.labelNameSearch.Text = "Название";
-            // 
-            // labelAutorSearch
-            // 
-            this.labelAutorSearch.AutoSize = true;
-            this.labelAutorSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAutorSearch.Location = new System.Drawing.Point(3, 78);
-            this.labelAutorSearch.Name = "labelAutorSearch";
-            this.labelAutorSearch.Size = new System.Drawing.Size(43, 16);
-            this.labelAutorSearch.TabIndex = 2;
-            this.labelAutorSearch.Text = "Автор";
-            // 
-            // labelGenreSearch
-            // 
-            this.labelGenreSearch.AutoSize = true;
-            this.labelGenreSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGenreSearch.Location = new System.Drawing.Point(6, 116);
-            this.labelGenreSearch.Name = "labelGenreSearch";
-            this.labelGenreSearch.Size = new System.Drawing.Size(40, 16);
-            this.labelGenreSearch.TabIndex = 3;
-            this.labelGenreSearch.Text = "Жанр";
-            // 
-            // labelTypeSearch
-            // 
-            this.labelTypeSearch.AutoSize = true;
-            this.labelTypeSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTypeSearch.Location = new System.Drawing.Point(3, 143);
-            this.labelTypeSearch.Name = "labelTypeSearch";
-            this.labelTypeSearch.Size = new System.Drawing.Size(85, 16);
-            this.labelTypeSearch.TabIndex = 4;
-            this.labelTypeSearch.Text = "Тип издания";
-            // 
-            // labelPriceFromSearch
-            // 
-            this.labelPriceFromSearch.AutoSize = true;
-            this.labelPriceFromSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPriceFromSearch.Location = new System.Drawing.Point(3, 184);
-            this.labelPriceFromSearch.Name = "labelPriceFromSearch";
-            this.labelPriceFromSearch.Size = new System.Drawing.Size(60, 16);
-            this.labelPriceFromSearch.TabIndex = 5;
-            this.labelPriceFromSearch.Text = "Цена от";
-            // 
-            // labelPriceToSearch
-            // 
-            this.labelPriceToSearch.AutoSize = true;
-            this.labelPriceToSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPriceToSearch.Location = new System.Drawing.Point(3, 210);
-            this.labelPriceToSearch.Name = "labelPriceToSearch";
-            this.labelPriceToSearch.Size = new System.Drawing.Size(60, 16);
-            this.labelPriceToSearch.TabIndex = 6;
-            this.labelPriceToSearch.Text = "Цена до";
-            // 
-            // NameTB
-            // 
-            this.NameTB.Location = new System.Drawing.Point(86, 48);
-            this.NameTB.Name = "NameTB";
-            this.NameTB.Size = new System.Drawing.Size(212, 20);
-            this.NameTB.TabIndex = 9;
-            this.NameTB.TextChanged += new System.EventHandler(this.NameTB_TextChanged);
-            // 
-            // AutorTB
-            // 
-            this.AutorTB.Location = new System.Drawing.Point(86, 74);
-            this.AutorTB.Name = "AutorTB";
-            this.AutorTB.Size = new System.Drawing.Size(212, 20);
-            this.AutorTB.TabIndex = 10;
-            this.AutorTB.TextChanged += new System.EventHandler(this.AutorTB_TextChanged);
-            // 
-            // PriceFromTB
-            // 
-            this.PriceFromTB.Location = new System.Drawing.Point(86, 180);
-            this.PriceFromTB.Name = "PriceFromTB";
-            this.PriceFromTB.Size = new System.Drawing.Size(212, 20);
-            this.PriceFromTB.TabIndex = 11;
-            this.PriceFromTB.TextChanged += new System.EventHandler(this.PriceFromTB_TextChanged);
-            // 
-            // PriceToTB
-            // 
-            this.PriceToTB.Location = new System.Drawing.Point(86, 206);
-            this.PriceToTB.Name = "PriceToTB";
-            this.PriceToTB.Size = new System.Drawing.Size(212, 20);
-            this.PriceToTB.TabIndex = 12;
-            this.PriceToTB.TextChanged += new System.EventHandler(this.PriceToTB_TextChanged);
+            this.TypeCB.FormattingEnabled = true;
+            this.TypeCB.Items.AddRange(new object[] {
+            "Книга(тв. обложка)",
+            "Книга(журн. обложка)",
+            "Брошура",
+            "Журнал",
+            "Газета",
+            "Комиксы",
+            "Манга"});
+            this.TypeCB.Location = new System.Drawing.Point(86, 138);
+            this.TypeCB.Name = "TypeCB";
+            this.TypeCB.Size = new System.Drawing.Size(212, 21);
+            this.TypeCB.TabIndex = 14;
+            this.TypeCB.SelectedIndexChanged += new System.EventHandler(this.TypeCB_SelectedIndexChanged);
+            this.TypeCB.TextUpdate += new System.EventHandler(this.TypeCB_TextUpdate);
             // 
             // GenreCB
             // 
@@ -352,23 +269,107 @@
             this.GenreCB.SelectedIndexChanged += new System.EventHandler(this.GenreCB_SelectedIndexChanged);
             this.GenreCB.TextUpdate += new System.EventHandler(this.GenreCB_TextUpdate);
             // 
-            // TypeCB
+            // PriceToTB
             // 
-            this.TypeCB.FormattingEnabled = true;
-            this.TypeCB.Items.AddRange(new object[] {
-            "Книга(тв. обложка)",
-            "Книга(журн. обложка)",
-            "Брошура",
-            "Журнал",
-            "Газета",
-            "Комиксы",
-            "Манга"});
-            this.TypeCB.Location = new System.Drawing.Point(86, 138);
-            this.TypeCB.Name = "TypeCB";
-            this.TypeCB.Size = new System.Drawing.Size(212, 21);
-            this.TypeCB.TabIndex = 14;
-            this.TypeCB.SelectedIndexChanged += new System.EventHandler(this.TypeCB_SelectedIndexChanged);
-            this.TypeCB.TextUpdate += new System.EventHandler(this.TypeCB_TextUpdate);
+            this.PriceToTB.Location = new System.Drawing.Point(86, 206);
+            this.PriceToTB.Name = "PriceToTB";
+            this.PriceToTB.Size = new System.Drawing.Size(212, 20);
+            this.PriceToTB.TabIndex = 12;
+            this.PriceToTB.TextChanged += new System.EventHandler(this.PriceToTB_TextChanged);
+            // 
+            // PriceFromTB
+            // 
+            this.PriceFromTB.Location = new System.Drawing.Point(86, 180);
+            this.PriceFromTB.Name = "PriceFromTB";
+            this.PriceFromTB.Size = new System.Drawing.Size(212, 20);
+            this.PriceFromTB.TabIndex = 11;
+            this.PriceFromTB.TextChanged += new System.EventHandler(this.PriceFromTB_TextChanged);
+            // 
+            // AutorTB
+            // 
+            this.AutorTB.Location = new System.Drawing.Point(86, 74);
+            this.AutorTB.Name = "AutorTB";
+            this.AutorTB.Size = new System.Drawing.Size(212, 20);
+            this.AutorTB.TabIndex = 10;
+            this.AutorTB.TextChanged += new System.EventHandler(this.AutorTB_TextChanged);
+            // 
+            // NameTB
+            // 
+            this.NameTB.Location = new System.Drawing.Point(86, 48);
+            this.NameTB.Name = "NameTB";
+            this.NameTB.Size = new System.Drawing.Size(212, 20);
+            this.NameTB.TabIndex = 9;
+            this.NameTB.TextChanged += new System.EventHandler(this.NameTB_TextChanged);
+            // 
+            // labelPriceToSearch
+            // 
+            this.labelPriceToSearch.AutoSize = true;
+            this.labelPriceToSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPriceToSearch.Location = new System.Drawing.Point(3, 210);
+            this.labelPriceToSearch.Name = "labelPriceToSearch";
+            this.labelPriceToSearch.Size = new System.Drawing.Size(60, 16);
+            this.labelPriceToSearch.TabIndex = 6;
+            this.labelPriceToSearch.Text = "Цена до";
+            // 
+            // labelPriceFromSearch
+            // 
+            this.labelPriceFromSearch.AutoSize = true;
+            this.labelPriceFromSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPriceFromSearch.Location = new System.Drawing.Point(3, 184);
+            this.labelPriceFromSearch.Name = "labelPriceFromSearch";
+            this.labelPriceFromSearch.Size = new System.Drawing.Size(60, 16);
+            this.labelPriceFromSearch.TabIndex = 5;
+            this.labelPriceFromSearch.Text = "Цена от";
+            // 
+            // labelTypeSearch
+            // 
+            this.labelTypeSearch.AutoSize = true;
+            this.labelTypeSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTypeSearch.Location = new System.Drawing.Point(3, 143);
+            this.labelTypeSearch.Name = "labelTypeSearch";
+            this.labelTypeSearch.Size = new System.Drawing.Size(85, 16);
+            this.labelTypeSearch.TabIndex = 4;
+            this.labelTypeSearch.Text = "Тип издания";
+            // 
+            // labelGenreSearch
+            // 
+            this.labelGenreSearch.AutoSize = true;
+            this.labelGenreSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGenreSearch.Location = new System.Drawing.Point(6, 116);
+            this.labelGenreSearch.Name = "labelGenreSearch";
+            this.labelGenreSearch.Size = new System.Drawing.Size(40, 16);
+            this.labelGenreSearch.TabIndex = 3;
+            this.labelGenreSearch.Text = "Жанр";
+            // 
+            // labelAutorSearch
+            // 
+            this.labelAutorSearch.AutoSize = true;
+            this.labelAutorSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAutorSearch.Location = new System.Drawing.Point(3, 78);
+            this.labelAutorSearch.Name = "labelAutorSearch";
+            this.labelAutorSearch.Size = new System.Drawing.Size(43, 16);
+            this.labelAutorSearch.TabIndex = 2;
+            this.labelAutorSearch.Text = "Автор";
+            // 
+            // labelNameSearch
+            // 
+            this.labelNameSearch.AutoSize = true;
+            this.labelNameSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNameSearch.Location = new System.Drawing.Point(3, 52);
+            this.labelNameSearch.Name = "labelNameSearch";
+            this.labelNameSearch.Size = new System.Drawing.Size(65, 16);
+            this.labelNameSearch.TabIndex = 1;
+            this.labelNameSearch.Text = "Название";
+            // 
+            // labelSearch
+            // 
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSearch.Location = new System.Drawing.Point(123, 12);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(75, 24);
+            this.labelSearch.TabIndex = 0;
+            this.labelSearch.Text = "ПОИСК";
             // 
             // FormMain
             // 

@@ -15,6 +15,8 @@ namespace BookShop
         BookSerializer Serializer = new BookSerializer();
         public string CurrentFilePath = "";
         public List<Book> Books = new List<Book>();
+        private int SortColumn = -1;
+        private int SortMode = 1;
 
         public FormMain()
         {
@@ -252,6 +254,23 @@ namespace BookShop
         private void TypeCB_TextUpdate(object sender, EventArgs e)
         {
             RedrawList();
+        }
+
+        private void booksLV_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            
+            if (e.Column != SortColumn)
+            {
+                SortColumn = e.Column;
+                SortMode = 1;
+            }
+            else
+            {  
+                SortMode = SortMode * -1;
+            }
+
+            this.booksLV.ListViewItemSorter = new ListViewItemComparer(e.Column, SortMode);
+            booksLV.Sort();
         }
     }
 }
