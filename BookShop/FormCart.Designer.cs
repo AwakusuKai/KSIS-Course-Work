@@ -42,6 +42,7 @@
             this.buttonDeleteFromCart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.labelItogo = new System.Windows.Forms.Label();
+            this.buttonSale = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // booksInCartLV
@@ -145,11 +146,22 @@
             this.labelItogo.TabIndex = 4;
             this.labelItogo.Text = "Итого";
             // 
+            // buttonSale
+            // 
+            this.buttonSale.Location = new System.Drawing.Point(131, 305);
+            this.buttonSale.Name = "buttonSale";
+            this.buttonSale.Size = new System.Drawing.Size(113, 42);
+            this.buttonSale.TabIndex = 5;
+            this.buttonSale.Text = "Оформить покупку";
+            this.buttonSale.UseVisualStyleBackColor = true;
+            this.buttonSale.Click += new System.EventHandler(this.buttonSale_Click);
+            // 
             // FormCart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 430);
+            this.ClientSize = new System.Drawing.Size(580, 430);
+            this.Controls.Add(this.buttonSale);
             this.Controls.Add(this.labelItogo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonDeleteFromCart);
@@ -178,5 +190,6 @@
         private System.Windows.Forms.Button buttonDeleteFromCart;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelItogo;
+        private System.Windows.Forms.Button buttonSale;
     }
 }

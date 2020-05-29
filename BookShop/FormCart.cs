@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,31 @@ namespace BookShop
             deletedBook.ParentBook.PriceAll = 0;
             Main.BooksInCart.Remove(deletedBook.ParentBook);
             RedrawCartList();
+        }
+
+        private void buttonSale_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter check = new StreamWriter("check.txt", true, System.Text.Encoding.Default))
+            {
+                check.WriteLine("------------------------------------------------------");
+                foreach(Book book in Main.BooksInCart)
+                {
+                    check.WriteLine(book.Name + ", " + book.NumberForSale.ToString() + "экземпляров, " + book.PriceAll.ToString());
+                }
+                check.WriteLine("Итого: " + PriceSum().ToString());
+            }
+
+            foreach(Book book in Main.BooksInCart)
+            {
+                book.Number = book.Number - book.NumberForSale;
+                book.NumberForSale = 0;
+                book.PriceAll = 0;
+                book.SubItems[7].Text = book.Number.ToString();
+            }
+
+            Main.BooksInCart.Clear();
+            RedrawCartList();
+            Main.RedrawList();
         }
     }
 }
