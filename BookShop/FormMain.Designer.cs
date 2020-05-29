@@ -62,6 +62,10 @@
             this.labelAutorSearch = new System.Windows.Forms.Label();
             this.labelNameSearch = new System.Windows.Forms.Label();
             this.labelSearch = new System.Windows.Forms.Label();
+            this.columnNumberToSell = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolStripButtonAddToCart = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOpenCart = new System.Windows.Forms.ToolStripButton();
+            this.columnPriceForSale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.panelSearch.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +80,9 @@
             this.columnPublishingHouse,
             this.columnYear,
             this.columnPrice,
-            this.columnNumber});
+            this.columnNumber,
+            this.columnNumberToSell,
+            this.columnPriceForSale});
             this.booksLV.FullRowSelect = true;
             this.booksLV.GridLines = true;
             this.booksLV.HideSelection = false;
@@ -134,7 +140,9 @@
             this.toolStripSeparator1,
             this.toolStripButtonAdd,
             this.toolStripDelete,
-            this.toolStripEdit});
+            this.toolStripEdit,
+            this.toolStripButtonAddToCart,
+            this.toolStripButtonOpenCart});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1379, 25);
@@ -371,6 +379,35 @@
             this.labelSearch.TabIndex = 0;
             this.labelSearch.Text = "ПОИСК";
             // 
+            // columnNumberToSell
+            // 
+            this.columnNumberToSell.Width = 0;
+            // 
+            // toolStripButtonAddToCart
+            // 
+            this.toolStripButtonAddToCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddToCart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddToCart.Image")));
+            this.toolStripButtonAddToCart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddToCart.Name = "toolStripButtonAddToCart";
+            this.toolStripButtonAddToCart.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonAddToCart.Text = "Добавить в корзину";
+            this.toolStripButtonAddToCart.Click += new System.EventHandler(this.toolStripButtonAddToCart_Click);
+            // 
+            // toolStripButtonOpenCart
+            // 
+            this.toolStripButtonOpenCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOpenCart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpenCart.Image")));
+            this.toolStripButtonOpenCart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOpenCart.Name = "toolStripButtonOpenCart";
+            this.toolStripButtonOpenCart.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonOpenCart.Text = "Открыть корзину";
+            this.toolStripButtonOpenCart.Click += new System.EventHandler(this.toolStripButtonOpenCart_Click);
+            // 
+            // columnPriceForSale
+            // 
+            this.columnPriceForSale.Text = "Итог";
+            this.columnPriceForSale.Width = 0;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -425,6 +462,10 @@
         private System.Windows.Forms.TextBox PriceFromTB;
         private System.Windows.Forms.ComboBox GenreCB;
         private System.Windows.Forms.ComboBox TypeCB;
+        private System.Windows.Forms.ColumnHeader columnNumberToSell;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAddToCart;
+        private System.Windows.Forms.ToolStripButton toolStripButtonOpenCart;
+        private System.Windows.Forms.ColumnHeader columnPriceForSale;
     }
 }
 

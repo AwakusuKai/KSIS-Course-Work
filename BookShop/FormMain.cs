@@ -15,6 +15,7 @@ namespace BookShop
         BookSerializer Serializer = new BookSerializer();
         public string CurrentFilePath = "";
         public List<Book> Books = new List<Book>();
+        public List<Book> BooksInCart = new List<Book>();
         private int SortColumn = -1;
         private int SortMode = 1;
 
@@ -22,6 +23,7 @@ namespace BookShop
         {
             InitializeComponent();
             Books = new List<Book>();
+            BooksInCart = new List<Book>();
         }
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
@@ -195,6 +197,11 @@ namespace BookShop
 
         private void toolStripDelete_Click(object sender, EventArgs e)
         {
+            if (booksLV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите книгу!");
+                return;
+            }
             Books.Remove((Book)booksLV.SelectedItems[0]);
             RedrawList();
         }
@@ -271,6 +278,46 @@ namespace BookShop
 
             this.booksLV.ListViewItemSorter = new ListViewItemComparer(e.Column, SortMode);
             booksLV.Sort();
+        }
+
+        private void toolStripButtonAddToCart_Click(object sender, EventArgs e)
+        {
+            if (booksLV.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите книгу!");
+                return;
+            }
+
+            int i = -1;
+            foreach (Book book in Books)
+            {
+                i++;
+                if (book == (Book)booksLV.SelectedItems[0])
+                {
+                    break;
+                }
+            }
+            Book bookToAddInCart = Books[i];
+
+            foreach (Book book in BooksInCart)
+            {
+                if(book == (Book)booksLV.SelectedItems[0])
+                {
+                    MessageBox.Show("Это уже есть в вашей корзине!");
+                    return;
+                }
+            }
+
+            int number = bookToAddInCart.Number;
+            FormHowMany formHowMany = new FormHowMany(number, this, ref bookToAddInCart);
+            formHowMany.Owner = this;
+            formHowMany.Show();
+        }
+
+        private void toolStripButtonOpenCart_Click(object sender, EventArgs e)
+        {
+            FormCart formCart = new FormCart(this);
+            formCart.Show();
         }
     }
 }

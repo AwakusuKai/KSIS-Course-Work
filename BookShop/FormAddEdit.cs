@@ -15,9 +15,9 @@ namespace BookShop
     {
         FormMain Main;
         List<Book> Books;
-        Book BookToEdit;
         int Mode; // 0-Add, 1-Edit
         int EditIndex;
+
         public FormAddEdit(ref List<Book> books, Form owner, int mode)
         {
             InitializeComponent();
@@ -25,6 +25,7 @@ namespace BookShop
             Main = this.Owner as FormMain;
             Books = books;
             Mode = mode;
+
 
 
         }

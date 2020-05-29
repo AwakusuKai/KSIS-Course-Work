@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookShop
 {
-    [Serializable]
-    public class Book : ListViewItem
+    public class BookInCart : ListViewItem
     {
         public new string Name;
         public string Autor;
@@ -21,8 +19,9 @@ namespace BookShop
         public int Number;
         public int NumberForSale;
         public float PriceAll;
+        public Book ParentBook;
 
-        public Book(string name, string autor, string genre, string type, string publishingHouse, int year, float price, int number)
+        public BookInCart(string name, string autor, string genre, string type, string publishingHouse, int year, float price, int number, Book parentBook)
         {
             Name = name;
             Autor = autor;
@@ -32,6 +31,10 @@ namespace BookShop
             Year = year;
             Price = price;
             Number = number;
+            ParentBook = parentBook;
+            NumberForSale = parentBook.NumberForSale;
+            PriceAll = parentBook.PriceAll;
+
             base.Text = Name;
             base.SubItems.Add(Autor);
             base.SubItems.Add(Genre);
@@ -41,21 +44,7 @@ namespace BookShop
             base.SubItems.Add(Price.ToString());
             base.SubItems.Add(Number.ToString());
             base.SubItems.Add(NumberForSale.ToString());
-            base.SubItems.Add(PriceAll.ToString());
-        }
-
-        protected Book(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-
-            Name = base.Text;
-            Autor = base.SubItems[1].Text;
-            Genre = base.SubItems[2].Text;
-            Type = base.SubItems[3].Text;
-            PublishingHouse = base.SubItems[4].Text;
-            Year = int.Parse(base.SubItems[5].Text.ToString());
-            Price = float.Parse(base.SubItems[6].Text.ToString());
-            Number = int.Parse(base.SubItems[7].Text.ToString());
-
+            base.SubItems.Add(PriceAll.ToString()); 
         }
     }
 }
