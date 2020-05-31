@@ -18,6 +18,7 @@ namespace BookShop
         public List<Book> BooksInCart = new List<Book>();
         private int SortColumn = -1;
         private int SortMode = 1;
+        Client Client;
 
         public FormMain()
         {
@@ -318,6 +319,11 @@ namespace BookShop
         {
             FormCart formCart = new FormCart(this);
             formCart.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Client = new Client(int.Parse(IDTB.Text), Books);
         }
     }
 }

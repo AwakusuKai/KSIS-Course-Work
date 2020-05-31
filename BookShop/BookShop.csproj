@@ -49,6 +49,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookInCart.cs" />
     <Compile Include="BookSerializer.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="FormCart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookShopLibrary\BookShopLibrary.csproj">
+      <Project>{fad522d1-1335-498e-b387-91f423f1995c}</Project>
+      <Name>BookShopLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

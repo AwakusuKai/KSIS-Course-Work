@@ -38,6 +38,8 @@
             this.columnYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnNumberToSell = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnPriceForSale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
@@ -46,6 +48,8 @@
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripEdit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAddToCart = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOpenCart = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panelSearch = new System.Windows.Forms.Panel();
@@ -62,10 +66,8 @@
             this.labelAutorSearch = new System.Windows.Forms.Label();
             this.labelNameSearch = new System.Windows.Forms.Label();
             this.labelSearch = new System.Windows.Forms.Label();
-            this.columnNumberToSell = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.toolStripButtonAddToCart = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOpenCart = new System.Windows.Forms.ToolStripButton();
-            this.columnPriceForSale = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
+            this.IDTB = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.panelSearch.SuspendLayout();
             this.SuspendLayout();
@@ -130,6 +132,15 @@
             // columnNumber
             // 
             this.columnNumber.Text = "Кол-во";
+            // 
+            // columnNumberToSell
+            // 
+            this.columnNumberToSell.Width = 0;
+            // 
+            // columnPriceForSale
+            // 
+            this.columnPriceForSale.Text = "Итог";
+            this.columnPriceForSale.Width = 0;
             // 
             // toolStrip1
             // 
@@ -213,6 +224,26 @@
             this.toolStripEdit.Size = new System.Drawing.Size(23, 22);
             this.toolStripEdit.Text = "Редактировать";
             this.toolStripEdit.Click += new System.EventHandler(this.toolStripEdit_Click);
+            // 
+            // toolStripButtonAddToCart
+            // 
+            this.toolStripButtonAddToCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAddToCart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddToCart.Image")));
+            this.toolStripButtonAddToCart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAddToCart.Name = "toolStripButtonAddToCart";
+            this.toolStripButtonAddToCart.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonAddToCart.Text = "Добавить в корзину";
+            this.toolStripButtonAddToCart.Click += new System.EventHandler(this.toolStripButtonAddToCart_Click);
+            // 
+            // toolStripButtonOpenCart
+            // 
+            this.toolStripButtonOpenCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOpenCart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpenCart.Image")));
+            this.toolStripButtonOpenCart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOpenCart.Name = "toolStripButtonOpenCart";
+            this.toolStripButtonOpenCart.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonOpenCart.Text = "Открыть корзину";
+            this.toolStripButtonOpenCart.Click += new System.EventHandler(this.toolStripButtonOpenCart_Click);
             // 
             // openFileDialog
             // 
@@ -379,40 +410,30 @@
             this.labelSearch.TabIndex = 0;
             this.labelSearch.Text = "ПОИСК";
             // 
-            // columnNumberToSell
+            // button1
             // 
-            this.columnNumberToSell.Width = 0;
+            this.button1.Location = new System.Drawing.Point(926, 418);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 28);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Подключиться к сети";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripButtonAddToCart
+            // IDTB
             // 
-            this.toolStripButtonAddToCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAddToCart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAddToCart.Image")));
-            this.toolStripButtonAddToCart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAddToCart.Name = "toolStripButtonAddToCart";
-            this.toolStripButtonAddToCart.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonAddToCart.Text = "Добавить в корзину";
-            this.toolStripButtonAddToCart.Click += new System.EventHandler(this.toolStripButtonAddToCart_Click);
-            // 
-            // toolStripButtonOpenCart
-            // 
-            this.toolStripButtonOpenCart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOpenCart.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpenCart.Image")));
-            this.toolStripButtonOpenCart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOpenCart.Name = "toolStripButtonOpenCart";
-            this.toolStripButtonOpenCart.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonOpenCart.Text = "Открыть корзину";
-            this.toolStripButtonOpenCart.Click += new System.EventHandler(this.toolStripButtonOpenCart_Click);
-            // 
-            // columnPriceForSale
-            // 
-            this.columnPriceForSale.Text = "Итог";
-            this.columnPriceForSale.Width = 0;
+            this.IDTB.Location = new System.Drawing.Point(1111, 421);
+            this.IDTB.Name = "IDTB";
+            this.IDTB.Size = new System.Drawing.Size(45, 20);
+            this.IDTB.TabIndex = 4;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1379, 450);
+            this.Controls.Add(this.IDTB);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.booksLV);
@@ -466,6 +487,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonAddToCart;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenCart;
         private System.Windows.Forms.ColumnHeader columnPriceForSale;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox IDTB;
     }
 }
 
