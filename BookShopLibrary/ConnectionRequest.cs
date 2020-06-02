@@ -11,7 +11,7 @@ namespace BookShopLibrary
     {
         public List<BookInServer> BookInServerList;
 
-        public ConnectionRequest(int clientID, List<BookInServer> bookInServerList) : base(clientID)
+        public ConnectionRequest(string senderIP, int senderPort, int clientID, List<BookInServer> bookInServerList) : base(senderIP, senderPort, clientID)
         {
             BookInServerList = bookInServerList;
         }

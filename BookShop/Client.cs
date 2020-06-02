@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using BookShopLibrary;
 
 namespace BookShop
@@ -12,11 +15,14 @@ namespace BookShop
     public class Client
     {
         public int ClientID; //Номер торгового места на ярмарке
-        public TcpClient TcpClient;
         public List<BookInServer> BookInServerList;
         private const string ServerIP = "127.0.0.1";
         private const int ServerPort = 50000;
         MessageSerialier ClientMessageSerializer;
+        private Socket TcpSocket;
+        private Thread ListenTcpThread;
+        NetworkStream NetworkStream;
+        MessageSerialier MessageSerialier = new MessageSerialier();
 
         public void SetBookInServerList(List<Book> books)
         {
@@ -28,23 +34,71 @@ namespace BookShop
             BookInServerList = bookInServerList;
         }
 
-        public void SendMessage(Message message)
+        public void SendMessage(BookShopLibrary.Message message)
         {
-            NetworkStream networkStream = TcpClient.GetStream();
-            byte[] data = ClientMessageSerializer.Serialize(message);
-            networkStream.Write(data, 0, data.Length);
+            TcpSocket.Send(ClientMessageSerializer.Serialize(message));
         }
 
         public Client(int clientID, List<Book> books)
         {
             ClientID = clientID;
-            TcpClient = new TcpClient();
+            TcpSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            ListenTcpThread = new Thread(ListenTcp);
             ClientMessageSerializer = new MessageSerialier();
-            TcpClient.Connect(IPAddress.Parse(ServerIP), ServerPort);
             SetBookInServerList(books);
-            ConnectionRequest connectionRequest = new ConnectionRequest(ClientID, BookInServerList);
-            SendMessage(connectionRequest);
+            IPEndPoint serverIPEndPoint = new IPEndPoint(IPAddress.Parse(ServerIP), ServerPort);
+            TcpSocket.Connect(serverIPEndPoint);
+            ListenTcpThread.Start();
 
+            IPEndPoint clientIp = (IPEndPoint)(TcpSocket.LocalEndPoint);
+            ConnectionRequest connectionRequest = new ConnectionRequest(clientIp.Address.ToString(), clientIp.Port, clientID, BookInServerList);
+            SendMessage(connectionRequest);
         }
+
+        public void ListenTcp()
+        {
+            int receivedDataBytesCount;
+            byte[] receivedDataBuffer;
+
+            while (true)
+            {
+                receivedDataBuffer = new byte[1024];
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    do
+                    {
+                        receivedDataBytesCount = TcpSocket.Receive(receivedDataBuffer, receivedDataBuffer.Length, SocketFlags.None);
+                        memoryStream.Write(receivedDataBuffer, 0, receivedDataBytesCount);
+                    }
+                    while (TcpSocket.Available > 0);
+                    if (receivedDataBytesCount > 0)
+                        HandleReceivedMessage(ClientMessageSerializer.Deserialize(memoryStream.ToArray()));
+                }
+            }
+        }
+
+        public void HandleReceivedMessage(BookShopLibrary.Message message)
+        {
+            if (message is SearchResponse)
+            {
+                string response = "";
+                BookShopLibrary.SearchResponse searchResponse = (SearchResponse)message;
+                foreach(string hit in searchResponse.HitList)
+                {
+                    response = hit + Environment.NewLine;
+                }
+                MessageBox.Show(response);
+            }
+        }
+
+        public void SendSearchRequest(BookInServer searchingBook)
+        {
+            IPEndPoint clientIp = (IPEndPoint)(TcpSocket.LocalEndPoint);
+            SearchRequest searchRequest = new SearchRequest(clientIp.Address.ToString(), clientIp.Port, ClientID, searchingBook);
+            SendMessage(searchRequest);
+        }
+
     }
 }
+
+

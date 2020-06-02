@@ -45,7 +45,10 @@
     <Compile Include="ConnectionRequest.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageSerialier.cs" />
+    <Compile Include="NetworkInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchRequest.cs" />
+    <Compile Include="SearchResponse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

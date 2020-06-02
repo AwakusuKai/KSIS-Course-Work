@@ -18,7 +18,7 @@ namespace BookShop
         public List<Book> BooksInCart = new List<Book>();
         private int SortColumn = -1;
         private int SortMode = 1;
-        Client Client;
+        public Client Client;
 
         public FormMain()
         {
@@ -324,6 +324,12 @@ namespace BookShop
         private void button1_Click(object sender, EventArgs e)
         {
             Client = new Client(int.Parse(IDTB.Text), Books);
+        }
+
+        private void toolStripButtonSearhRequest_Click(object sender, EventArgs e)
+        {
+            FormSearch formSearch = new FormSearch(this);
+            formSearch.Show();
         }
     }
 }

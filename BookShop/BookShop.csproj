@@ -50,45 +50,54 @@
     <Compile Include="BookInCart.cs" />
     <Compile Include="BookSerializer.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="FormCart.cs">
+    <Compile Include="Forms\FormCart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCart.Designer.cs">
+    <Compile Include="Forms\FormCart.Designer.cs">
       <DependentUpon>FormCart.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddEdit.cs">
+    <Compile Include="Forms\FormAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddEdit.Designer.cs">
+    <Compile Include="Forms\FormAddEdit.Designer.cs">
       <DependentUpon>FormAddEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHowMany.cs">
+    <Compile Include="Forms\FormHowMany.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormHowMany.Designer.cs">
+    <Compile Include="Forms\FormHowMany.Designer.cs">
       <DependentUpon>FormHowMany.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSearch.Designer.cs">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="ISerializer.cs" />
     <Compile Include="ListViewItemComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormCart.resx">
+    <EmbeddedResource Include="Forms\FormCart.resx">
       <DependentUpon>FormCart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddEdit.resx">
+    <EmbeddedResource Include="Forms\FormAddEdit.resx">
       <DependentUpon>FormAddEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormHowMany.resx">
+    <EmbeddedResource Include="Forms\FormHowMany.resx">
       <DependentUpon>FormHowMany.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSearch.resx">
+      <DependentUpon>FormSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

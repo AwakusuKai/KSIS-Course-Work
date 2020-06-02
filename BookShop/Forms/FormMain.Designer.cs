@@ -68,6 +68,7 @@
             this.labelSearch = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.IDTB = new System.Windows.Forms.TextBox();
+            this.toolStripButtonSearhRequest = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panelSearch.SuspendLayout();
             this.SuspendLayout();
@@ -153,7 +154,8 @@
             this.toolStripDelete,
             this.toolStripEdit,
             this.toolStripButtonAddToCart,
-            this.toolStripButtonOpenCart});
+            this.toolStripButtonOpenCart,
+            this.toolStripButtonSearhRequest});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1379, 25);
@@ -427,6 +429,16 @@
             this.IDTB.Size = new System.Drawing.Size(45, 20);
             this.IDTB.TabIndex = 4;
             // 
+            // toolStripButtonSearhRequest
+            // 
+            this.toolStripButtonSearhRequest.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSearhRequest.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSearhRequest.Image")));
+            this.toolStripButtonSearhRequest.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSearhRequest.Name = "toolStripButtonSearhRequest";
+            this.toolStripButtonSearhRequest.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonSearhRequest.Text = "Поисковый запрос";
+            this.toolStripButtonSearhRequest.Click += new System.EventHandler(this.toolStripButtonSearhRequest_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,6 +501,7 @@
         private System.Windows.Forms.ColumnHeader columnPriceForSale;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox IDTB;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSearhRequest;
     }
 }
 
