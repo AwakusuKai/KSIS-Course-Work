@@ -54,7 +54,15 @@ namespace BookShop
         {
             if (Mode == 0)
             {
-                Books.Add(new Book(NameTB.Text, AutorTB.Text, GenteCB.Text, TypeCB.Text, PublishingHouseTB.Text, int.Parse(YearTB.Text), float.Parse(PriceTB.Text), int.Parse(NumberTB.Text)));
+                try
+                {
+                    Books.Add(new Book(NameTB.Text, AutorTB.Text, GenteCB.Text, TypeCB.Text, PublishingHouseTB.Text, int.Parse(YearTB.Text), float.Parse(PriceTB.Text), int.Parse(NumberTB.Text)));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Некорректные данные!");
+                    return;
+                }
                 this.Close();
                 Main.RedrawList();
                 Main.SendListUpdateToServer();

@@ -14,7 +14,6 @@ namespace BookShopServer
 {
     public class Server
     {
-        //Dictionary<int, List<BookInServer>> BooksDictionary;
         private const string ServerIP = "127.0.0.1";
         private const int ServerPort = 50000;
         private Socket tcpSocket;
@@ -24,7 +23,6 @@ namespace BookShopServer
 
         public Server()
         {
-            //BooksDictionary = new Dictionary<int, List<BookInServer>>();
             MessageSerializer = new MessageSerialier();
             clientsList = new List<ConnectedClient>();
             tcpListenThread = new Thread(ListenTCP);
@@ -180,7 +178,7 @@ namespace BookShopServer
             {
                 return true;
             }
-            if (searchingBook.Type == book.Type)
+            if (searchingBook.Year == book.Year)
             {
                 return true;
             }

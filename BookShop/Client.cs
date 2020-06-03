@@ -84,7 +84,7 @@ namespace BookShop
                 BookShopLibrary.SearchResponse searchResponse = (SearchResponse)message;
                 foreach(string hit in searchResponse.HitList)
                 {
-                    response = hit + Environment.NewLine;
+                    response += hit + Environment.NewLine;
                 }
                 MessageBox.Show(response);
             }
