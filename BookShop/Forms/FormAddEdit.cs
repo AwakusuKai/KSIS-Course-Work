@@ -57,12 +57,14 @@ namespace BookShop
                 Books.Add(new Book(NameTB.Text, AutorTB.Text, GenteCB.Text, TypeCB.Text, PublishingHouseTB.Text, int.Parse(YearTB.Text), float.Parse(PriceTB.Text), int.Parse(NumberTB.Text)));
                 this.Close();
                 Main.RedrawList();
+                Main.SendListUpdateToServer();
             }
             if (Mode == 1)
             {
                 Books[EditIndex] = new Book(NameTB.Text, AutorTB.Text, GenteCB.Text, TypeCB.Text, PublishingHouseTB.Text, int.Parse(YearTB.Text), float.Parse(PriceTB.Text), int.Parse(NumberTB.Text));
                 this.Close();
                 Main.RedrawList();
+                Main.SendListUpdateToServer();
             }
             
         }

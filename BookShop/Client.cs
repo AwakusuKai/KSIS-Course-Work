@@ -21,7 +21,6 @@ namespace BookShop
         MessageSerialier ClientMessageSerializer;
         private Socket TcpSocket;
         private Thread ListenTcpThread;
-        NetworkStream NetworkStream;
         MessageSerialier MessageSerialier = new MessageSerialier();
 
         public void SetBookInServerList(List<Book> books)
@@ -91,12 +90,22 @@ namespace BookShop
             }
         }
 
+        public void SendUpdateBookListRequest(List<Book> books)
+        {
+            IPEndPoint clientIP = (IPEndPoint)(TcpSocket.LocalEndPoint);
+            SetBookInServerList(books);
+            UpdateBookListRequest updateBookListRequest = new UpdateBookListRequest(clientIP.Address.ToString(), clientIP.Port, ClientID, BookInServerList);
+            SendMessage(updateBookListRequest);
+        }
+
         public void SendSearchRequest(BookInServer searchingBook)
         {
             IPEndPoint clientIp = (IPEndPoint)(TcpSocket.LocalEndPoint);
             SearchRequest searchRequest = new SearchRequest(clientIp.Address.ToString(), clientIp.Port, ClientID, searchingBook);
             SendMessage(searchRequest);
         }
+
+
 
     }
 }

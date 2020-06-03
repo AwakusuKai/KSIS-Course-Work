@@ -20,6 +20,15 @@ namespace BookShop
         private int SortMode = 1;
         public Client Client;
 
+
+        public void SendListUpdateToServer()
+        {
+            if (Client != null)
+            {
+                Client.SendUpdateBookListRequest(Books);
+            }
+        }
+
         public FormMain()
         {
             InitializeComponent();
@@ -182,6 +191,7 @@ namespace BookShop
             else
                 CurrentFilePath = "";
             RedrawList();
+            SendListUpdateToServer();
         }
 
         private void toolStripButtonSave_Click(object sender, EventArgs e)
@@ -205,6 +215,7 @@ namespace BookShop
             }
             Books.Remove((Book)booksLV.SelectedItems[0]);
             RedrawList();
+            SendListUpdateToServer();
         }
 
         private void toolStripEdit_Click(object sender, EventArgs e)

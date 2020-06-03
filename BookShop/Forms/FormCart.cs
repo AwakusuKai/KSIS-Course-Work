@@ -86,6 +86,7 @@ namespace BookShop
             Main.BooksInCart.Clear();
             RedrawCartList();
             Main.RedrawList();
+            Main.SendListUpdateToServer();
         }
     }
 }

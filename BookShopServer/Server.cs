@@ -47,14 +47,14 @@ namespace BookShopServer
                         receivedDataBytesCount = connectedSocket.Receive(receivedDataBuffer, receivedDataBuffer.Length, SocketFlags.None);
                         memoryStream.Write(receivedDataBuffer, 0, receivedDataBytesCount);
                     }
-                    while (tcpSocket.Available > 0); // проверить
+                    while (tcpSocket.Available > 0); 
                 if (receivedDataBytesCount > 0)
                     HandleConnectionMessage(MessageSerializer.Deserialize(memoryStream.ToArray()), connectedSocket);
                 }
             }
         }
 
-        public void HandleReceivedMessage(Message message) //обработчик сообщений
+        public void HandleReceivedMessage(Message message) 
         {
             if (message is SearchRequest)
             {
@@ -68,9 +68,21 @@ namespace BookShopServer
                 }
             }
 
+            if (message is UpdateBookListRequest)
+            {
+                UpdateBookListRequest updateBookListRequest = (UpdateBookListRequest)message;
+                foreach(ConnectedClient connectedClient in clientsList)
+                {
+                    if (connectedClient.ClientID == updateBookListRequest.ClientID)
+                    {
+                        connectedClient.ClientBookList = updateBookListRequest.NewBookList;
+                    }
+                }
+            }
+
         }
 
-        public void HandleConnectionMessage(Message message, Socket connectedSocket) //обработчик сообщений
+        public void HandleConnectionMessage(Message message, Socket connectedSocket) 
         {
             if (message is ConnectionRequest)
             {
