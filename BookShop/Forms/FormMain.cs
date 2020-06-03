@@ -174,6 +174,14 @@ namespace BookShop
                 if (CorrectBook(book))
                 {
                     booksLV.Items.Add(book);
+                    if (book.Number == 0)
+                    {
+                        book.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        book.BackColor = Color.White;
+                    }
                 } 
             }
         }
